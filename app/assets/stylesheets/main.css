@@ -25,12 +25,20 @@ label {
 }
 
 #time {
-    color: #578;
-    display: inline;
+    color: #689;
+    display: inline-block;
+    text-align: right;
+    padding-top: 1em;
 }
 
 #relate-time {
     display: inline-block;
+    width: 100%;
+}
+
+#time-div {
+    display: inline;
+    float: right;
 }
 
 hr {
