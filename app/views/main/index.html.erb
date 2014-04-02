@@ -3,10 +3,10 @@
 <form action="/submit_rant" method="get">
     <input name="authenticity_token" type="hidden" value="token_value">
     <label>
-        Tell me your feelings
+        Tell me your feelings...
     </label>
     <br/>
-    <textarea class='input' name='text' type='text' rows="4" cols="50"></textarea>
+    <textarea class='input' name='text' type='text' rows="4" cols="30"></textarea>
     <br />
     <br />
     <button id='submit' class='btn btn-primary'>Rant</button>
@@ -15,18 +15,24 @@
 <hr />
 <div>
     <% @rants.reverse.each do |rant| %>
-        <div>
+        <div id='rant'>
             <div>
-                <h4>
+                <h4 id='text'>
                     <%= rant.text %>
                 </h4>
                 <br/>
-                <p style='color: grey'>
-                    <%= rant.created_at.asctime %>
-                </p>
+                <div id='relate-time'>
+                    <button class='btn'>
+                        Relate
+                    </button>
+                    <p id='time'>
+                        <%= rant.created_at.asctime %>
+                    </p>
+                </div>
             </div>
         </div>
     <br />
+    <hr id='rant-split'/>
     <br />
     <% end %>
 </div>
