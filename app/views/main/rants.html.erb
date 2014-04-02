@@ -1,0 +1,20 @@
+<div>
+    <% @rants.reverse.each do |rant| %>
+        <div>
+            <h2>
+                <%= rant.title %>
+            </h2>
+            <div>
+                <h4>
+                    <%= rant.text %>
+                </h4>
+                <br/>
+                <p style='color: grey'>
+                    <%= rant.created_at.asctime %>
+                </p>
+            </div>
+        </div>
+    <br />
+    <br />
+    <% end %>
+</div>

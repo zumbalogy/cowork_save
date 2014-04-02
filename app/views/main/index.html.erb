@@ -1,1 +1,32 @@
-this is the index
+<br/>
+<br/>
+<form action="/submit_rant" method="get">
+    <input name="authenticity_token" type="hidden" value="token_value">
+    <label>
+        Tell me your feelings
+    </label>
+    <br/>
+    <textarea class='input' name='text' type='text' rows="4" cols="50"></textarea>
+    <br />
+    <br />
+    <button id='submit' class='btn btn-primary'>Rant</button>
+</form>
+
+<hr />
+<div>
+    <% @rants.reverse.each do |rant| %>
+        <div>
+            <div>
+                <h4>
+                    <%= rant.text %>
+                </h4>
+                <br/>
+                <p style='color: grey'>
+                    <%= rant.created_at.asctime %>
+                </p>
+            </div>
+        </div>
+    <br />
+    <br />
+    <% end %>
+</div>

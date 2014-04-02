@@ -1,7 +1,10 @@
 Jagg::Application.routes.draw do
 
   root 'main#index'
-  
+  get '/submit_rant' => 'main#submit_rant'
+  get '/rants' => 'main#rants'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
