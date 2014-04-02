@@ -1,11 +1,13 @@
 body {
     background-color: #aaa;
     color: #111;
+    font-family: sans-serif;
 }
 
 label {
-    font-size: 2.3em;
-    color: #777;
+    font-size: 2em;
+    color: #555;
+    font-family: 'Antic Didone', serif;
 }
 
 .input {
@@ -18,7 +20,7 @@ label {
 
 
 #yeild {
-    background-color: white;
+    background-color: #fdfdfd;
     margin-left: 25%;   
 }
 
@@ -33,11 +35,14 @@ label {
 
 hr {
     border-top: 1px dashed lightgrey;
+    padding: 0.2em;
 }
 
 #submit {
     background-color: red;
     border: none;
+    float: right;
+    margin-right: 2.5em;
 }
 
 #rant {
@@ -51,11 +56,15 @@ hr {
 }
 
 #text {
-    color: grey;
+    color: #5d5d5d;
 }
 
 form {
     margin-left: 3em;
     margin-right: 3em;
     padding-left: 3em;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
 }

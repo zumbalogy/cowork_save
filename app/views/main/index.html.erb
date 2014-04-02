@@ -3,14 +3,20 @@
 <form action="/submit_rant" method="get">
     <input name="authenticity_token" type="hidden" value="token_value">
     <label>
-        Tell me your feelings...
+        Tell me how you really feel...
     </label>
     <br/>
     <textarea class='input' name='text' type='text' rows="4" cols="30"></textarea>
     <br />
     <br />
-    <button id='submit' class='btn btn-primary'>Rant</button>
+    <button id='submit' class='btn btn-primary'>
+        <strong>Rant</strong>
+    </button>
 </form>
+
+<br />
+<br />
+
 
 <hr />
 <div>
@@ -26,7 +32,7 @@
                         Relate
                     </button>
                     <p id='time'>
-                        <%= rant.created_at.asctime %>
+                        <%= rant.created_at.asctime.to_s[0..-9] %>
                     </p>
                 </div>
             </div>
