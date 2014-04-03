@@ -19,7 +19,7 @@
 
 
 <hr />
-<div>
+<div id='rant-list'>
     <% @rants.reverse.each do |rant| %>
         <div id='rant'>
             <div>
@@ -32,9 +32,9 @@
                         Relate
                     </button>
                     <div id='time-div'>
-                    <p id='time'>
-                        <%= rant.created_at.asctime.to_s[0..-9] %>
-                    </p>
+                        <p id='time'>
+                            <%= rant.created_at.asctime.to_s[0..-9] %>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -46,9 +46,6 @@
 </div>
 
 <script type="text/javascript">
-    function onlyUnique(value, index, self) { 
-        return self.indexOf(value) === index;
-    }
     var relate = $('.relate')
     var related = [0]
     relate.on('click', function(){
@@ -61,4 +58,51 @@
         })
         related.push($(this).attr('id'))
     })
+
+    function render(rant) {
+        top_div = $(document.createElement('div'))
+        top_div.attr('id', 'rant-list')
+        sec_div = $(document.createElement('div'))
+        sec_div.attr('id', 'rant')
+        third_div = $(document.createElement('div'))
+        h4 = $(document.createElement('h4'))
+        h4.attr('id', 'text')
+        h4.text(rant.text)
+
+        fourth_div = $(document.createElement('div'))
+        fourth_div.attr('id', 'relate-time')
+        button = $(document.createElement('button'))
+        button.attr('id', rant.id)
+        button.attr('class', 'btn relate')
+        button.text('Relate')
+
+        fith_div = $(document.createElement('div'))
+        fith_div.attr('id', 'time-div')
+        p = $(document.createElement('p'))
+        p.attr('id', 'time')
+        p.text(rant.created_at)
+
+        fith_div.append(p)
+
+        fourth_div.append(button)
+        fourth_div.append(fith_div)
+        
+
+        third_div.append(h4)
+        third_div.append($(document.createElement('br')))
+        third_div.append(fourth_div)
+        sec_div.append(third_div)
+        top_div.append(sec_div)
+        top_div.append($(document.createElement('br')))
+        top_div.append($(document.createElement('hr')))
+        top_div.append($(document.createElement('br')))
+        $('#rant-list').prepend(top_div)
+    }
+
+    function fetch() {
+        $.ajax({
+            url: 'fetch_new',
+            method: 'post',
+        })
+    }
 </script>
