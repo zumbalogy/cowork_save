@@ -28,7 +28,7 @@
                 </h4>
                 <br/>
                 <div id='relate-time'>
-                    <button class='btn'>
+                    <button id='<%= rant.id %>' class='btn relate'>
                         Relate
                     </button>
                     <div id='time-div'>
@@ -44,3 +44,21 @@
     <br />
     <% end %>
 </div>
+
+<script type="text/javascript">
+    function onlyUnique(value, index, self) { 
+        return self.indexOf(value) === index;
+    }
+    var relate = $('.relate')
+    var related = [0]
+    relate.on('click', function(){
+        $(this).toggleClass('related')
+        $.ajax({
+            url: '/relate',
+            method: 'post',
+            data: {'related': related, 'id': $(this).attr('id')}
+
+        })
+        related.push($(this).attr('id'))
+    })
+</script>

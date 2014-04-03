@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140402165249) do
   create_table "rants", force: true do |t|
     t.string   "title"
     t.text     "text"
+    t.integer  "relate_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

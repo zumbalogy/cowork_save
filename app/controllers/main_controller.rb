@@ -15,4 +15,14 @@ class MainController < ApplicationController
     def rants
         @rants = Rant.all
     end
+
+    def relate
+        id = params[:id]
+        unless params[:related].include? id
+            rant = Rant.find(id)
+            rant.relate_count += 1
+            rant.save
+        end
+        render nothing: true
+    end
 end

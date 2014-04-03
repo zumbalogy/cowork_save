@@ -76,3 +76,8 @@ form {
 button {
     font-family: 'Roboto', sans-serif;
 }
+
+.related {
+    background-color: #1AFF57;
+    border: 1px solid lightgreen;
+}
