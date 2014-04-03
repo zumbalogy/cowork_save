@@ -1,5 +1,8 @@
 body {
     background-color: #aaa;
+    background-image: url('/images/draft1.jpg');
+    background-size: cover;
+    background-repeat:no-repeat;
     color: #111;
     font-family: sans-serif;
 }
@@ -21,7 +24,10 @@ label {
 
 #yeild {
     background-color: #fdfdfd;
+    background-color: rgba(255,255,255, 0.9);
     margin-left: 25%;   
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 #time {
