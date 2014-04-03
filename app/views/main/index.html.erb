@@ -68,7 +68,7 @@
         button = $(document.createElement('button'))
         button.attr('id', rant.id)
         button.attr('class', 'btn relate')
-        button.text('Relate (' + rant.relate_count + ')')
+        button.text('Relate')
         button.on('click', function(){
         $(this).toggleClass('related')
             $.ajax({
