@@ -23,21 +23,9 @@
 </div>
 
 <script type="text/javascript">
-    var relate = $('.relate')
     var related = [0]
-    relate.on('click', function(){
-        $(this).toggleClass('related')
-        $.ajax({
-            url: '/relate',
-            method: 'post',
-            data: {'related': related, 'id': $(this).attr('id')}
-
-        })
-        related.push($(this).attr('id'))
-    })
 
     function render(rant) {
-        $('#rant-list').empty()
         top_div = $(document.createElement('div'))
         top_div.attr('id', 'rant-list')
         sec_div = $(document.createElement('div'))
@@ -53,6 +41,16 @@
         button.attr('id', rant.id)
         button.attr('class', 'btn relate')
         button.text('Relate')
+        button.on('click', function(){
+        $(this).toggleClass('related')
+            $.ajax({
+                url: '/relate',
+                method: 'post',
+                data: {'related': related, 'id': $(this).attr('id')}
+
+            })
+            related.push($(this).attr('id'))
+        })
 
         fith_div = $(document.createElement('div'))
         fith_div.attr('id', 'time-div')
@@ -77,15 +75,18 @@
         $('#rant-list').prepend(top_div)
     }
 
+    var latest = 0
     function fetch() {
         $.ajax({
             url: 'fetch_new',
-            method: 'post'
+            method: 'post',
+            data: {latest: latest}
         })
         .success(function(data){
             for (var i = 0; i < data.length; i++){
                 render(data[i])
             }
+            latest = data[data.length - 1].id
         })
     }
 
@@ -93,6 +94,8 @@
 
     setInterval(function(){
         fetch()
-    }, 500)
+    },1000)
+
+
 
 </script>

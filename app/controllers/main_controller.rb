@@ -27,6 +27,6 @@ class MainController < ApplicationController
     end
 
     def fetch
-        render json: Rant.all
+        render json: Rant.where('id > ?', params[:latest])
     end
 end
