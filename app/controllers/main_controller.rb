@@ -27,6 +27,11 @@ class MainController < ApplicationController
     end
 
     def fetch
-        render json: Rant.where('id > ?', params[:latest])
+        output = Rant.where('id > ?', params[:latest]).to_a.map(&:serializable_hash)
+        output = output.map do |rant|
+            rant['created_at'] = rant['created_at'].to_i * 1000
+            rant
+        end
+        render json: output
     end
 end

@@ -23,6 +23,34 @@
 </div>
 
 <script type="text/javascript">
+    function prettyDate(time){
+        var date = new Date((time || "").replace(/-/g,"/").replace(/[TZ]/g," ")),
+            diff = (((new Date()).getTime() - date.getTime()) / 1000),
+            day_diff = Math.floor(diff / 86400);
+                
+        if ( isNaN(day_diff) || day_diff < 0 || day_diff >= 31 ){
+            return;
+        }
+                
+        return day_diff == 0 && (
+                diff < 60 && "just now" ||
+                diff < 120 && "1 minute ago" ||
+                diff < 3600 && Math.floor( diff / 60 ) + " minutes ago" ||
+                diff < 7200 && "1 hour ago" ||
+                diff < 86400 && Math.floor( diff / 3600 ) + " hours ago") ||
+            day_diff == 1 && "Yesterday" ||
+            day_diff < 7 && day_diff + " days ago" ||
+            day_diff < 31 && Math.ceil( day_diff / 7 ) + " weeks ago";
+    }
+
+    jQuery.fn.prettyDate = function(){
+        return this.each(function(){
+            var date = prettyDate(this.title);
+            if ( date )
+                jQuery(this).text( date );
+        });
+    }
+
     var related = [0]
 
     function render(rant) {
@@ -56,7 +84,15 @@
         fith_div.attr('id', 'time-div')
         p = $(document.createElement('p'))
         p.attr('id', 'time')
-        p.text(rant.created_at)
+        p.attr('class', 'timestamp')
+        var time = new Date(rant.created_at)
+        var date = time.toDateString()
+        date = date.slice(0, date.length - 4)
+        var clock = time.toLocaleTimeString()
+        newStr = clock.split('');
+        newStr.splice(5, 3);
+        clock = newStr.join('');
+        p.text(clock + ' ' + date)
 
         fith_div.append(p)
 
@@ -75,7 +111,8 @@
         $('#rant-list').prepend(top_div)
     }
 
-    var latest = 0
+    var latest = 0;
+
     function fetch() {
         $.ajax({
             url: 'fetch_new',
@@ -83,17 +120,20 @@
             data: {latest: latest}
         })
         .success(function(data){
-            for (var i = 0; i < data.length; i++){
-                render(data[i])
+            if (data.length > 0){
+                for (var i = 0; i < data.length; i++){
+                    render(data[i])
+                }
+                latest = data[i - 1].id
             }
-            latest = data[data.length - 1].id
         })
-    }
+    };
 
-    fetch()
+    fetch();
 
     setInterval(function(){
         fetch()
+        
     },1000)
 
 
