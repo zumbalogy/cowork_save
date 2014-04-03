@@ -118,14 +118,16 @@
         $.ajax({
             url: 'fetch_new',
             method: 'post',
-            data: {latest: latest}
-        })
-        .success(function(data){
-            if (data.length > 0){
-                for (var i = 0; i < data.length; i++){
-                    render(data[i])
+            data: {latest: latest},
+            success: function(data) {
+                if (data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        render(data[i])
+                        if (data[i].id > latest) {
+                            latest = data[i].id
+                        }
+                    }
                 }
-                latest = data[i - 1].id
             }
         })
     };
