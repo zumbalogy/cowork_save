@@ -1,0 +1,105 @@
+body {
+    background-color: #aaa;
+    background-image: url('/images/draft1.jpg');
+    background-size: cover;
+    background-repeat:no-repeat;
+    color: #111;
+    font-family: sans-serif;
+}
+
+label {
+    font-size: 2em;
+    color: #555;
+    font-family: 'Antic Didone', serif;
+}
+
+.input {
+    color: grey;
+    font-size: 1.4em;
+    background-color: rgba(100,100,100, 0.1);
+    border: none;
+       
+}
+
+
+#yeild {
+    background-color: #fdfdfd;
+    background-color: rgba(255,255,255, 0.9);
+    margin-left: 25%;   
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+#time {
+    color: #689;
+    display: inline-block;
+    text-align: right;
+    padding-top: 1em;
+}
+
+#relate-time {
+    display: inline-block;
+    width: 100%;
+}
+
+#time-div {
+    display: inline;
+    float: right;
+}
+
+hr {
+    border-top: 1px dashed lightgrey;
+    padding: 0.2em;
+}
+
+#submit {
+    background-color: red;
+    border: none;
+    float: right;
+    margin-right: 2.5em;
+}
+
+#rant {
+    padding-left: 3em;
+    padding-right: 3em;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    margin-left: 3em;
+    margin-right: 3em;
+
+}
+
+#text {
+    color: #5d5d5d;
+}
+
+form {
+    margin-left: 3em;
+    margin-right: 3em;
+    padding-left: 3em;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+}
+
+.related {
+    background-color: #1AFF57;
+    border: 1px solid lightgreen;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+
+ */
+
+
