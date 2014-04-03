@@ -17,32 +17,9 @@
 <br />
 <br />
 
-
 <hr />
+
 <div id='rant-list'>
-    <% @rants.reverse.each do |rant| %>
-        <div id='rant'>
-            <div>
-                <h4 id='text'>
-                    <%= rant.text %>
-                </h4>
-                <br/>
-                <div id='relate-time'>
-                    <button id='<%= rant.id %>' class='btn relate'>
-                        Relate
-                    </button>
-                    <div id='time-div'>
-                        <p id='time'>
-                            <%= rant.created_at.asctime.to_s[0..-9] %>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <br />
-    <hr id='rant-split'/>
-    <br />
-    <% end %>
 </div>
 
 <script type="text/javascript">
@@ -60,6 +37,7 @@
     })
 
     function render(rant) {
+        $('#rant-list').empty()
         top_div = $(document.createElement('div'))
         top_div.attr('id', 'rant-list')
         sec_div = $(document.createElement('div'))
@@ -102,7 +80,19 @@
     function fetch() {
         $.ajax({
             url: 'fetch_new',
-            method: 'post',
+            method: 'post'
+        })
+        .success(function(data){
+            for (var i = 0; i < data.length; i++){
+                render(data[i])
+            }
         })
     }
+
+    fetch()
+
+    setInterval(function(){
+        fetch()
+    }, 500)
+
 </script>

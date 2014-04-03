@@ -25,4 +25,8 @@ class MainController < ApplicationController
         end
         render nothing: true
     end
+
+    def fetch
+        render json: Rant.all
+    end
 end

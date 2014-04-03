@@ -4,6 +4,7 @@ Jagg::Application.routes.draw do
   get '/submit_rant' => 'main#submit_rant'
   get '/rants' => 'main#rants'
   post '/relate' => 'main#relate'
+  post '/fetch_new' => 'main#fetch'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
